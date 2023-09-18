@@ -1,5 +1,8 @@
+/* eslint-disable @next/next/no-head-element */
+"use client"
 import "@/styles/globals.css"
 import { Metadata } from "next"
+import { SessionProvider } from "next-auth/react"
 
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
@@ -29,7 +32,10 @@ interface RootLayoutProps {
   children: React.ReactNode
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({
+  children,
+  params: { session, ...params },
+}: any) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
@@ -40,13 +46,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
             fontSans.variable
           )}
         >
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="relative flex min-h-screen flex-col">
-              <SiteHeader />
-              <div className="flex-1">{children}</div>
-            </div>
-            <TailwindIndicator />
-          </ThemeProvider>
+          <SessionProvider session={session}>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+              <div className="relative flex min-h-screen flex-col">
+                <div className="flex-1">{children}</div>
+              </div>
+              {/* <TailwindIndicator /> */}
+            </ThemeProvider>
+          </SessionProvider>
         </body>
       </html>
     </>
