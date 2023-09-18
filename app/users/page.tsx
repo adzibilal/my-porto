@@ -36,10 +36,6 @@ import { SiteHeader } from "@/components/site-header"
 import TableUserSkeleton from "@/components/skeleton/table-user-skeleton"
 import { UserNav } from "@/components/user-nav"
 
-export const metadata: Metadata = {
-  title: "Tasks",
-  description: "A task and issue tracker build using Tanstack Table.",
-}
 
 interface IPagination {
   currentPage: number
