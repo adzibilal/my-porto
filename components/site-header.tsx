@@ -9,7 +9,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { UserNav } from "./user-nav"
 
 export function SiteHeader() {
-  const { data: session } = useSession()
+  // const { data: session } = useSession()
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
@@ -49,7 +49,7 @@ export function SiteHeader() {
             </Link>
             <ThemeToggle />
 
-            {session ? (
+            {/* {session ? (
               <>
                 <UserNav/>
                 Signed in as {session?.user?.email} <br />
@@ -60,7 +60,7 @@ export function SiteHeader() {
                 Not signed in <br />
                 <button onClick={() => signIn()}>Sign in</button>
               </>
-            )}
+            )} */}
           </nav>
         </div>
       </div>
